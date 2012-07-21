@@ -15,6 +15,11 @@ import java.util.HashSet;
 public class PatriciaTrie<T>{
 
 	/**
+	 * root:	Root of the RadixTree
+	 */
+	private PatriciaTrieNode root = new PatriciaTrieNode();
+
+	/**
 	 * 
 	 * @author mlarocca
 	 * 
@@ -30,7 +35,7 @@ public class PatriciaTrie<T>{
 		private HashSet<T> items = new HashSet<T>();
 		
 		/**
-		 * Empty constructor.
+		 * Empty constructor. (Used to create the root of the trie)
 		 * Label defaults to null, children and items list have already been initialized to empty containers.
 		 *  
 		 */
@@ -248,11 +253,12 @@ public class PatriciaTrie<T>{
 				pos = (l+r)/2;
 				PatriciaTrieNode child = children.get(pos);
 				String label = child.label;
-				int l_len = label.length();
 				tmp_c = label.charAt(0);
 				if (tmp_c == c){
 					//At least one prefix of the string matches this child
 					child.items.remove(item);
+					
+					int l_len = label.length();
 					int i = 1;
 					int s_len = s.length();
 					
@@ -280,11 +286,6 @@ public class PatriciaTrie<T>{
 
 		}
 	}
-	 
-	/**
-	 * root:	Root of the RadixTree
-	 */
-	private PatriciaTrieNode root = new PatriciaTrieNode();
 	
 	/**
 	 * Inserts a new string, and all its prefixes, into the tree.
