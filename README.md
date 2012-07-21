@@ -21,6 +21,8 @@ General purpose implementation of advanced algorithms
 	1)	A Trie<Boolean> can be created, without modifying anything, at the cost of passing a fake not-null value as the second parameter of the insert function;
 	2)	The implementation can be slightly changed, removing the generics code and adding a boolean parameter to the Node class.
 	
-	The remove method is implemented in a "lazy" way: it won't actually remove any node from the trie, it will just set to null the object associated with the string to remove.
-	This approach prevent from searching the trie for prefixes of its strings, so in the future a non-lazy removal will be added (it can be done by adding parent pointers to each node or, to avoid this extra space and synchronization overhead, during the deletion nodes in the path can be added to a stack).
-	The lazy approach, however, speeds up significantly the deletion at the cost of keeping a bigger tree (since dead edges and paths won't be removed for the tree), so it is particularly useful only when it is expected to have a much greater number of insertion than deletion from the tree. 
+	Two versions of the remove method are implemented:
+	1) 	A "lazy" way: it won't actually remove any node from the trie, it will just set to null the object associated with the string to remove.
+		This approach prevent from searching the trie for prefixes of its strings; the lazy approach, however, speeds up significantly the deletion at the cost of keeping a bigger tree (since dead edges and paths won't be removed for the tree), so it is particularly useful only when it is expected to have a much greater number of insertion than deletion from the tree.
+	2) 	A thorough approach, which deletes dead paths when strings are removed from the trie. This is the suggested approach when string removal is expected to be a common operation on the trie (for dynamic tries).
+	NOTE:	The two methods SHOULD NOT be mixed (once lazy, always lazy...). It is care of the caller to avoid such things, so you'd better leave only the method you want to be used when you add this code to your project.

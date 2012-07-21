@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -60,12 +61,12 @@ public class Trie<T>{
 		 * @return
 		 */
 		public TrieNode search(char c){
-			int l = 0, r = children.size()-1, pos = 0;
+			int l = 0, r = children.size() - 1, pos = 0;
 			char tmp_c;
 			
 			//Binary search on the edges to the children (they are stored in lexicographic order).
 			while (l <= r){
-				pos = (l+r)/2;
+				pos = (l + r) / 2;
 				tmp_c = children.get(pos).edgeLabel;
 				if (tmp_c == c){
 					return children.get(pos);
@@ -93,7 +94,7 @@ public class Trie<T>{
 			char tmp_c;
 			//Binary search over the edges to the children (sorted lexicographically)
 			while (l <= r){
-				pos = (l+r)/2;
+				pos = (l + r) / 2;
 				TrieNode child = children.get(pos);
 				tmp_c = child.edgeLabel;
 				if (tmp_c == c){
@@ -126,9 +127,15 @@ public class Trie<T>{
 		 * Sets the object associated with the path from the root to this node
 		 * to null - i.e., it removes the string corresponding to that path
 		 * from the trie.
+		 * 
+		 * @return: True <=> the item has been correctly removed;
 		 */
-		public void removeItem(){
+		public boolean removeItem(){
+			if (this.item == null){
+				return false;
+			}
 			this.item = null;
+			return true;
 		}
 		
 		
@@ -139,7 +146,6 @@ public class Trie<T>{
 		 * 						 (iff it has no children and no string is 
 		 * 						  associated with a path up to this node)
 		 */
-		@SuppressWarnings("unused")
 		public boolean isEmpty(){
 			return this.item == null && this.children.size() == 0;
 		}
@@ -162,6 +168,72 @@ public class Trie<T>{
 		node.setItem(item);
 	}
 
+	/**
+	 * Removes a string previously inserted into the trie.
+	 * 
+	 * @param s:	The string to remove;
+	 * 
+	 * @return:	True <=> the string was stored in the trie and has been removed correctly.
+	 */
+	public boolean removeString(String s){
+		char[] cArray = s.toCharArray();
+		ArrayList<TrieNode> stack = new ArrayList<TrieNode>();
+		TrieNode node = root;
+		for (char c: cArray){
+			try{
+				node = node.search(c);
+				stack.add(node);
+			}catch(NullPointerException e){
+				//If search returns null, the string isn't in the trie;
+				return false;
+			}
+		}
+		try{
+			if (!node.removeItem()){
+				//The string wasn't in the trie
+				return false;
+			}
+
+			if (node.isEmpty()){
+				char c, tmp_c;
+				int l, r, pos, n = stack.size() - 1;
+				ArrayList<TrieNode> children;
+				stack.remove(n--);	//Removes the node corresponding to the string deleted from the stack;
+				
+				//Deletes nodes of the path from the root to the node corresponding to the deleted string
+				//until a not empty node is found, or the root is reached
+				//(removes nodes that has become obsolete)
+				do{
+					c = node.edgeLabel;
+					node = stack.remove(n--);	//Next element on the stack is the parent of the TrieNode previously stored in node.
+					children = node.children;
+					
+					//Binary search on the edges to the children to find the position of the child node.
+					l = 0;
+					r = children.size() - 1;
+					while (l <= r){
+						pos = (l + r) / 2;
+						tmp_c = children.get(pos).edgeLabel;
+						if (tmp_c == c){
+							children.remove(pos);
+							break;
+						}else if (tmp_c < c){
+							l = pos + 1;
+						}else{
+							r = pos - 1;
+						}
+					}				
+				}while (n >= 0 && node.isEmpty());	//n >= 0 <=> !stack.isEmpty()
+			}
+			
+		}catch(NullPointerException e){
+			//If node is null, the string isn't in the trie;
+			return false;
+		}
+		//The string has been correctly removed
+		return true;
+	}
+
 	
 
 	/**
@@ -171,7 +243,7 @@ public class Trie<T>{
 	 * 
 	 * @return:	True <=> the string was stored in the trie and has been removed correctly.
 	 */
-	public boolean removeString(String s){
+	public boolean lazyRemoveString(String s){
 		char[] cArray = s.toCharArray();
 		TrieNode node = root;
 		for (char c: cArray){
@@ -210,7 +282,11 @@ public class Trie<T>{
 				return null;
 			}
 		}
-		return node.item;			
+		try{
+			return node.item;			
+		}catch(NullPointerException e){
+			return null;
+		}
 	}
 	
 }
