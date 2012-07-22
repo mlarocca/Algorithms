@@ -42,3 +42,7 @@ General purpose implementation of advanced algorithms
     The class is designed on the Template Pattern: it implements just the sketch of a genetic algorithm, with a random initialization, and then a cycle, with a new __population created at each iteration from the __population at the previous one.
     This class specifies only the selection algorithm (round robin selection) and the elitism criteria; the details of chromosomes' structure, of the  crossover and of the mutations algorithms (including the number of different kinds of mutations), together with their ratio of application, are completely left to the specific class that models evolving individuals.
 	A base class for individuals, on which problem specific individuals might be modeled (also through inheritance) and a short example of how to use it are also provided.
+
+6)	Queue, PriorityQueue	-	Javascript	(container.js)
+	
+7)	Graphs:	Depth-First Search, Breadth-First Search, Dijkstra, Prim	-	JavaScript	(graph.js, requires container.js)
