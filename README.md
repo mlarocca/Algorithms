@@ -43,6 +43,10 @@ General purpose implementation of advanced algorithms
     This class specifies only the selection algorithm (round robin selection) and the elitism criteria; the details of chromosomes' structure, of the  crossover and of the mutations algorithms (including the number of different kinds of mutations), together with their ratio of application, are completely left to the specific class that models evolving individuals.
 	A base class for individuals, on which problem specific individuals might be modeled (also through inheritance) and a short example of how to use it are also provided.
 
-6)	Queue, PriorityQueue	-	Javascript	(container.js)
+6)	Simulated Annealing	-	Python
+	The class is designed on the Template Pattern: it implements just the sketch of the simulated annealing algorithm, leaving the problem specific operation for the Solution class to specify.
+	A base class for individuals, on which problem specific individuals might be modeled (also through inheritance) and a short example of how to use it are also provided.
+
+7)	Queue, PriorityQueue	-	Javascript	(container.js)
 	
-7)	Graphs:	Depth-First Search, Breadth-First Search, Dijkstra, Prim	-	JavaScript	(graph.js, requires container.js)
+8)	Graphs:	Depth-First Search, Breadth-First Search, Dijkstra, Prim	-	JavaScript	(graph.js, requires container.js)
