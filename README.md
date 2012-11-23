@@ -65,3 +65,18 @@ General purpose implementation of advanced algorithms
 8.	**Queue, PriorityQueue**	-	Javascript	(container.js)
 	
 9.	**Graphs:	Depth-First Search, Breadth-First Search, Dijkstra, Prim**	-	JavaScript	(graph.js, requires container.js)
+
+10. **Network Flow** - Python (network_flow.py)
+
+	Two algorithms are given:
+	* Edmonds-Karp, which runs in O(|V|*|E|^2)
+	* Relabel-to-Front, which runs in O(|V|^3)
+	
+	Both algorithms takes as input the list of the edges of the graph as a dictionary, with pairs of vertices as keys associated to edges' capacity.
+    The only limitations for the input are:
+	1) (Trivially) No two vertex can share the same label
+	2) Vertex can have any label of any hashable type; labels, however, can't be or evaluate to None
+	3) If (u,v) belongs to the graph, (v,u) can't be in it
+	
+	
+	
