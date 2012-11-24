@@ -166,19 +166,16 @@ def relabel_to_front(edges, source, sink):
     push(source, u)
   
   p = 0
-  examined = 0
   k = len(v_list)
-  while examined < k:       
+  while p < k:       
     u = v_list[p]
     old_height = height[u]
     discharge(u)
     if height[u] > old_height:
-    #v_list.insert(0, v_list.pop(p)) # move to front of v_list
-    #p = 0 # start from front of v_list
-      examined = 0
+      v_list.insert(0, v_list.pop(p)) # move to front of v_list
+      p = 0 # start from front of v_list
     else:
-      p = (p + 1) % k
-      examined += 1
+      p += 1
     
   return sum(flow[(source, dest)] for dest in adj[source]), flow
 
