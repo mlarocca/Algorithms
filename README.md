@@ -37,6 +37,10 @@ General purpose implementation of advanced algorithms
 	In this implementation, when a string is inserted in the tree, an object is passed along with it; a reference to this object is stored in every node of the tree corresponding to a prefix of the string inserted.
 	For example, if the strings inserted into the tree are titles of papers, these objects could be the full papers' text.
 	If one is not interested in such features but only in establishing wheter or not a given prefix is stored into the tree, the list of associated objects may be replaced with a counter, for example.
+	WARNING: The "remove item" operation only removes from the tree a certain item associated with a path, but doen't remove the path itself
+
+3.B **PatriciaTrie** (aka RadixTree)	- Python (patricia_trie.py)
+	Same algorithms, in a fast python implementation
 	
 4.	**Horowitz-Sahni algorithm**	-	Python
 
