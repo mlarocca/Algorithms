@@ -19,13 +19,18 @@ General purpose implementation of advanced algorithms
 	Insertion of multiple instances of the same string is not supported: the latter occurrence of a string inserted will overwrite the object previously associated with the same string.	
 	
 		To support multiple occurrences of the same string, a list of objects might be stored.
+        
 	If no object needs to be associated with a string and the it is simply needed to assess whether or not a string has been inserted in the trie, 2 solutions are possible:
+    
 	1)	A Trie<Boolean> can be created, without modifying anything, at the cost of passing a fake not-null value as the second parameter of the insert function;
+    
 	2)	The implementation can be slightly changed, removing the generics code and adding a boolean parameter to the Node class.	
 	
 		Two versions of the remove method are implemented:
+        
 	1) 	A "lazy" way: it won't actually remove any node from the trie, it will just set to null the object associated with the string to remove.
 		This approach prevent from searching the trie for prefixes of its strings; the lazy approach, however, speeds up significantly the deletion at the cost of keeping a bigger tree (since dead edges and paths won't be removed for the tree), so it is particularly useful only when it is expected to have a much greater number of insertion than deletion from the tree.
+        
 	2) 	A thorough approach, which deletes dead paths when strings are removed from the trie. This is the suggested approach when string removal is expected to be a common operation on the trie (for dynamic tries).
 	
 		NOTE:	The two methods SHOULD NOT be mixed (once lazy, always lazy...). It is care of the caller to avoid such things, so you'd better leave only the method you want to be used when you add this code to your project.
@@ -78,16 +83,22 @@ General purpose implementation of advanced algorithms
 	
 	Both algorithms takes as input the list of the edges of the graph as a dictionary, with pairs of vertices as keys associated to edges' capacity.
     The only limitations for the input are:
+    
 	1) (Trivially) No two vertex can share the same label
+    
 	2) Vertex can have any label of any hashable type; labels, however, can't be or evaluate to None
+    
 	3) If (u,v) belongs to the graph, (v,u) can't be in it
 	
 11. **Sudoku Solver** - Python (sudoku/)
         
     A fast sudoku solver, nice example of heuristic-driven backtracking.
     Includes:
+    
     1) sudoku_solver.py - A very fast sudoku solver 
+    
     2) sudoku_tester.py - A tester module that achieves 100% statement and branches coverage (with coverage.py)
+    
     3) sudoku_profiler.py - A profiler for the solver module.
 
     It accepts any valid iterable as input, as long as its size is correct (9x9) and its values are valid (I see no reason not to accept tuples or dictionaries as well as lists).
