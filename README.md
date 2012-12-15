@@ -82,5 +82,15 @@ General purpose implementation of advanced algorithms
 	2) Vertex can have any label of any hashable type; labels, however, can't be or evaluate to None
 	3) If (u,v) belongs to the graph, (v,u) can't be in it
 	
-	
+11. **Sudoku Solver** - Python (sudoku/)
+        
+    A fast sudoku solver, nice example of heuristic-driven backtracking.
+    Includes:
+    1) sudoku_solver.py - A very fast sudoku solver 
+    2) sudoku_tester.py - A tester module that achieves 100% statement and branches coverage (with coverage.py)
+    3) sudoku_profiler.py - A profiler for the solver module.
+
+    It accepts any valid iterable as input, as long as its size is correct (9x9) and its values are valid (I see no reason not to accept tuples or dictionaries as well as lists).
+    Please find more in the file comments.
+    So far it looks like it doesn't break on any input, but... let me know if you manage to crash it.
 	
