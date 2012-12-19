@@ -44,7 +44,7 @@ General purpose implementation of advanced algorithms
 	If one is not interested in such features but only in establishing wheter or not a given prefix is stored into the tree, the list of associated objects may be replaced with a counter, for example.
 	WARNING: The "remove item" operation only removes from the tree a certain item associated with a path, but doen't remove the path itself
 
-3.B **PatriciaTrie** (aka RadixTree)	- Python (patricia_trie.py)
+3.B **PatriciaTrie** (aka RadixTree)	- Python ( *patricia_trie.py* )
 	Same algorithms, in a fast python implementation
 	
 4.	**Horowitz-Sahni algorithm**	-	Python
@@ -71,11 +71,11 @@ General purpose implementation of advanced algorithms
 	The class is designed on the Template Pattern: it implements just the sketch of the simulated annealing algorithm, leaving the problem specific operation for the Solution class to specify.
 	A base class for individuals, on which problem specific individuals might be modeled (also through inheritance) and a short example of how to use it are also provided.
 
-8.	**Queue, PriorityQueue**	-	Javascript	(container.js)
+8.	**Queue, PriorityQueue**	-	Javascript	( *container.js* )
 	
 9.	**Graphs:	Depth-First Search, Breadth-First Search, Dijkstra, Prim**	-	JavaScript	(graph.js, requires container.js)
 
-10. **Network Flow** - Python (network_flow.py)
+10. **Network Flow** - Python ( *network_flow.py* )
 
 	Two algorithms are given:
 	* Edmonds-Karp, which runs in O(|V|*|E|^2)
@@ -90,16 +90,16 @@ General purpose implementation of advanced algorithms
     
 	3) If (u,v) belongs to the graph, (v,u) can't be in it
 	
-11. **Sudoku Solver** - Python (sudoku/)
+11. **Sudoku Solver** - Python ( *sudoku/* )
         
     A fast sudoku solver, nice example of heuristic-driven backtracking.
     Includes:
     
-    1) sudoku_solver.py - A very fast sudoku solver 
+    1) *sudoku_solver.py* - A very fast sudoku solver 
     
-    2) sudoku_tester.py - A tester module that achieves 100% statement and branches coverage (with coverage.py)
+    2) *sudoku_tester.py* - A tester module that achieves 100% statement and branches coverage (with *coverage.py*)
     
-    3) sudoku_profiler.py - A profiler for the solver module.
+    3) *sudoku_profiler.py* - A profiler for the solver module.
 
     It accepts any valid iterable as input, as long as its size is correct (9x9) and its values are valid (I see no reason not to accept tuples or dictionaries as well as lists).
     Please find more in the file comments.
