@@ -105,3 +105,13 @@ General purpose implementation of advanced algorithms
     Please find more in the file comments.
     So far it looks like it doesn't break on any input, but... let me know if you manage to crash it.
 	
+12. **Union-Find** - Python ( *union_find.py* )
+    
+    Union-Find data structure, with weighted trees and path compression
+
+13. **D-ary Heap** - Python ( *dway_heap.py* )
+    
+    Implementation of a priority queue with a [d-way heap](http://en.wikipedia.org/wiki/D-ary_heap) (aka d-ary heap or d-heap)
+    D-way heaps are pretty useful in practice in the implementation of Dijkstra and Prim algorithms for graphs, among many other things. While Fibonacci's heaps would be theoretically faster, no simple and fast implementation of such data structures is known. In practice, a 4-way heap is the best solution for the priority queues in these algorithms.
+
+    To be used in those algorithms, the data structure supports the operation decrease_priority, if keys in the heap are unique (as it is the case for algorithms on graph without repeated vertices).
