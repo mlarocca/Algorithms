@@ -109,7 +109,7 @@ General purpose implementation of advanced algorithms
     
     Union-Find data structure, with weighted trees and path compression
 
-13. **D-ary Heap** - Python ( *dway_heap.py* )
+13. **D-ary Heap** - Python ( *dway_heap.py* ), Java ( *DWayHeap.java* )
     
     Implementation of a priority queue with a [d-way heap](http://en.wikipedia.org/wiki/D-ary_heap) (aka d-ary heap or d-heap)
     D-way heaps are pretty useful in practice in the implementation of Dijkstra and Prim algorithms for graphs, among many other things. While Fibonacci's heaps would be theoretically faster, no simple and fast implementation of such data structures is known. In practice, a 4-way heap is the best solution for the priority queues in these algorithms.
