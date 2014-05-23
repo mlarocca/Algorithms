@@ -20,7 +20,7 @@
     @param p:   List of elements' values;
     @param w:   List of elements' weights;
     @param e:   List of elements' scaled values: e[i] = p[i]/w[i]
-                The elements available are sorted accorting to the 'e' vector.
+                The elements available are sorted according to the 'e' vector.
                 The i-th element has value p[i], weight w[i].
     @param N:   The number of elements available;
     @param c:   Total capacity of the knapsack;

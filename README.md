@@ -115,3 +115,17 @@ General purpose implementation of advanced algorithms
     D-way heaps are pretty useful in practice in the implementation of Dijkstra and Prim algorithms for graphs, among many other things. While Fibonacci's heaps would be theoretically faster, no simple and fast implementation of such data structures is known. In practice, a 4-way heap is the best solution for the priority queues in these algorithms.
 
     To be used in those algorithms, the data structure supports the operation decrease_priority, if keys in the heap are unique (as it is the case for algorithms on graph without repeated vertices).
+
+14. **Karger Randomized Contraction algorithm for finding Minimum Cut in undirected Graphs**
+
+    In computer science and graph theory, Karger's algorithm is a randomized algorithm to compute a minimum cut of a connected graph. It was invented by David Karger and first published in 1993.
+
+    A cut is a set of edges that, if removed, would disconnect the Graph; a minimum cut is the smallest possible set of edges that, when removed, produce a disconnected Graph.
+    Every minimum cut corresponds to a partitioning of the Graph vertices into two non-empty subsets, such that the edges in the cut only have their endpoints in the two different subsets. 
+    
+    Karger algorithm builds a cut of the graph by randomly creating this partitions, and in particular by choosing at each iteration a random edge, and contracting the graph around it: basically, merging its two endpoints in a single vertex, and updating the remaining edges, such that the self-loops introduced (like the chosen edge itself) are removed from the new Graph, and storing parallel-edges (if the algorithm chooses an edge (_u_,_v_) and both _u_ and _v_ have edges to a third vertex _w_, then the new Graph will have two edges between the new vertex _z_ and _w_)
+    After _n-2_ iterations, only two macro-vertex will be left, and the parallel edges between them will form the cut.
+
+    The algorithm is a Montecarlo algorithm, i.e. its running time is deterministic, but it isn't guaranteed that at every iteration the best solution will be found.
+
+    Actually the probability of finding the minimum cut in one run of the algorithm is pretty low, with an upper bound of 1 over _n_ squared, where _n_ is the number of vertices in the Graph. Nonetheless, by running the algorithm multiple times and storing the best result found, the probability that none of the runs founds the minimum cut becomes very small: 1 over _e_ (Neper) for _n_ squared runs, and 1 over _n_ for _n_ log(_n_) runs - for large values of _n_, i.e. for large Graphs, that's a negligible probability.    
