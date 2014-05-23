@@ -44,38 +44,38 @@ General purpose implementation of advanced algorithms
 	If one is not interested in such features but only in establishing wheter or not a given prefix is stored into the tree, the list of associated objects may be replaced with a counter, for example.
 	WARNING: The "remove item" operation only removes from the tree a certain item associated with a path, but doen't remove the path itself
 
-3.B **PatriciaTrie** (aka RadixTree)	- Python ( *patricia_trie.py* )
+4. **PatriciaTrie** (aka RadixTree)	- Python ( *patricia_trie.py* )
 	Same algorithms, in a fast python implementation
 	
-4.	**Horowitz-Sahni algorithm**	-	Python
+5.	**Horowitz-Sahni algorithm**	-	Python
 
 	H.S. algorithm is a branch and bound algorithm that efficiently solves the 0-1 Knapsack problem, provided that the elements to be inserted into the knapsack are sorted accordind to the ratio p[i]/w[i], from the largest to the smallest, where p[i] is the value of the i-th element and w[i] is its weight.
 	An iterative version of the algorithm is provided; in the main cycle, it ries to add as much elements to the knapsack as possible according to their scaled value ("forward move") and then, when it funds a critical element (i.e. one that cannot be added to the knapsack) estimates an upper bound in particular Dantzig's upper bound) for the maximum value that is possible to get with the current elements included in the solution: if this bound is lower than the best value obtained so far, prunes the recursion and perform a backtracking move, looking for the closest '1' in the subset bit mask (if it exists), and removing the corresponding element from the knapsack. 
     To improve performance, some features of the Martello-Toth algorithm are 
     added (for instance a tighter bound than Danzing's is computed).
 
-5. 	**Martello-Toth reduction for 0-1 Knapsack** 	-	Python
+6. 	**Martello-Toth reduction for 0-1 Knapsack** 	-	Python
 
 	Tries to reduce the 0-1 Knapsack problem by finding the elements that must be part of any optimal solution (set J1) and those that can't appear in an optimal solution (set J0). The core is represented by all the elements that neither belongs to J1 or J0, and the exact solution may now be computed on this smaller set rather than on the whole set of elements: the global solution will then be the union of the solution on the core problem and the elements in the set J1.    
     The critical element (whose index is s) is the only one that might appear in both sets: if it is so and the intersection between the two sets is not empty, then the reduction is not valid.    
     During the reduction process, a value p_star is computed: this is a lower to the optimal solution. If the sum of the core problem solution and the value of the elements in J1 is lower than p_star, then p_star is the solution to the problem (it might be worth keeping track of the elements corresponding to the highest value of p_star found, for this reason).
 
-6.	**Genetic Algorithm Template**	-	Python
+7.	**Genetic Algorithm Template**	-	Python
 
     The class is designed on the Template Pattern: it implements just the sketch of a genetic algorithm, with a random initialization, and then a cycle, with a new __population created at each iteration from the __population at the previous one.
     This class specifies only the selection algorithm (round robin selection) and the elitism criteria; the details of chromosomes' structure, of the  crossover and of the mutations algorithms (including the number of different kinds of mutations), together with their ratio of application, are completely left to the specific class that models evolving individuals.
 	A base class for individuals, on which problem specific individuals might be modeled (also through inheritance) and a short example of how to use it are also provided.
 
-7.	**Simulated Annealing Template**	-	Python
+8.	**Simulated Annealing Template**	-	Python
 
 	The class is designed on the Template Pattern: it implements just the sketch of the simulated annealing algorithm, leaving the problem specific operation for the Solution class to specify.
 	A base class for individuals, on which problem specific individuals might be modeled (also through inheritance) and a short example of how to use it are also provided.
 
-8.	**Queue, PriorityQueue**	-	Javascript	( *container.js* )
+9.	**Queue, PriorityQueue**	-	Javascript	( *container.js* )
 	
-9.	**Graphs:	Depth-First Search, Breadth-First Search, Dijkstra, Prim**	-	JavaScript	(graph.js, requires container.js)
+10.	**Graphs:	Depth-First Search, Breadth-First Search, Dijkstra, Prim**	-	JavaScript	(graph.js, requires container.js)
 
-10. **Network Flow** - Python ( *network_flow.py* )
+11. **Network Flow** - Python ( *network_flow.py* )
 
 	Two algorithms are given:
 	* Edmonds-Karp, which runs in O(|V|*|E|^2)
@@ -90,7 +90,7 @@ General purpose implementation of advanced algorithms
     
 	3) If (u,v) belongs to the graph, (v,u) can't be in it
 	
-11. **Sudoku Solver** - Python ( *sudoku/* )
+12. **Sudoku Solver** - Python ( *sudoku/* )
         
     A fast sudoku solver, nice example of heuristic-driven backtracking.
     Includes:
@@ -105,18 +105,18 @@ General purpose implementation of advanced algorithms
     Please find more in the file comments.
     So far it looks like it doesn't break on any input, but... let me know if you manage to crash it.
 	
-12. **Union-Find** - Python ( *union_find.py* )
+13. **Union-Find** - Python ( *union_find.py* )
     
     Union-Find data structure, with weighted trees and path compression
 
-13. **D-ary Heap** - Python ( *dway_heap.py* ), Java ( *DWayHeap.java* )
+14. **D-ary Heap** - Python ( *dway_heap.py* ), Java ( *DWayHeap.java* )
     
     Implementation of a priority queue with a [d-way heap](http://en.wikipedia.org/wiki/D-ary_heap) (aka d-ary heap or d-heap)
     D-way heaps are pretty useful in practice in the implementation of Dijkstra and Prim algorithms for graphs, among many other things. While Fibonacci's heaps would be theoretically faster, no simple and fast implementation of such data structures is known. In practice, a 4-way heap is the best solution for the priority queues in these algorithms.
 
     To be used in those algorithms, the data structure supports the operation decrease_priority, if keys in the heap are unique (as it is the case for algorithms on graph without repeated vertices).
 
-14. **Karger Randomized Contraction algorithm for finding Minimum Cut in undirected Graphs** - Python ( *karger/karger.py* )
+15. **Karger Randomized Contraction algorithm for finding Minimum Cut in undirected Graphs** - Python ( *karger/karger.py* )
 
     In computer science and graph theory, Karger's algorithm is a randomized algorithm to compute a minimum cut of a connected graph. It was invented by David Karger and first published in 1993.
 
