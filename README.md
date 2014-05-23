@@ -116,7 +116,7 @@ General purpose implementation of advanced algorithms
 
     To be used in those algorithms, the data structure supports the operation decrease_priority, if keys in the heap are unique (as it is the case for algorithms on graph without repeated vertices).
 
-14. **Karger Randomized Contraction algorithm for finding Minimum Cut in undirected Graphs**
+14. **Karger Randomized Contraction algorithm for finding Minimum Cut in undirected Graphs** - Python ( *karger/karger.py* )
 
     In computer science and graph theory, Karger's algorithm is a randomized algorithm to compute a minimum cut of a connected graph. It was invented by David Karger and first published in 1993.
 
@@ -128,4 +128,6 @@ General purpose implementation of advanced algorithms
 
     The algorithm is a Montecarlo algorithm, i.e. its running time is deterministic, but it isn't guaranteed that at every iteration the best solution will be found.
 
-    Actually the probability of finding the minimum cut in one run of the algorithm is pretty low, with an upper bound of 1 over _n_ squared, where _n_ is the number of vertices in the Graph. Nonetheless, by running the algorithm multiple times and storing the best result found, the probability that none of the runs founds the minimum cut becomes very small: 1 over _e_ (Neper) for _n_ squared runs, and 1 over _n_ for _n_ log(_n_) runs - for large values of _n_, i.e. for large Graphs, that's a negligible probability.    
+    Actually the probability of finding the minimum cut in one run of the algorithm is pretty low, with an upper bound of 1 over _n_ squared, where _n_ is the number of vertices in the Graph. Nonetheless, by running the algorithm multiple times and storing the best result found, the probability that none of the runs founds the minimum cut becomes very small: 1 over _e_ (Neper) for _n_ squared runs, and 1 over _n_ for _n_ log(_n_) runs - for large values of _n_, i.e. for large Graphs, that's a negligible probability.
+
+    The implementation provided is written in Python, assumes the Graph represented with adjacency list (as a Dictionary) and is restricted to having only integer vertices labels (ideally the number from 0 to n-1): this limitation allows to exploit the _union-find_ implementation provided, and can be easily overcome by mapping the original labels to the range [0..n-1].
